@@ -1,0 +1,45 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata: 
+  name: test-deploy
+spec: 
+  replicas: 3
+  selector: 
+    matchLabels: 
+      page: test-label
+  template: 
+    metadata: 
+      name: test-pod 
+      labels: 
+        page: test-label 
+    spec: 
+      containers: 
+      - name: test 
+        image: nginx 
+        ports: 
+        - containerPort: 80
+---
+apiVersion: v1
+kind: Service 
+metadata: 
+  name: test-nodeport 
+spec: 
+  ports: 
+  - name: test-lb 
+    targetPort: 80 
+    port: 80 
+  selector: 
+    page: test-label
+  type: LoadBalncer
+---
+
+
+
+
+
+
+
+
+
+
