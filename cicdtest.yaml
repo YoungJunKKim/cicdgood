@@ -31,7 +31,7 @@ spec:
     port: 80 
   selector: 
     page: test-label
-  type: LoadBalncer
+  type: LoadBalancer
 ---
 
 
